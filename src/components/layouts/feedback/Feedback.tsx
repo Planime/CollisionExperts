@@ -85,9 +85,17 @@ const Feedback = () => {
 			<Container>
 				<div className='mb-6 items-center justify-between gap-4 md:mb-8 md:flex lg:mb-10'>
 					<Heading className='max-md:text-center'>Feedbacks</Heading>
-					<Button variant='light' size='md' className='max-md:hidden'>
-						more reviews
-					</Button>
+
+					 <a
+                             href="https://maps.app.goo.gl/RAbmyLP1sFEEfxdMA"
+                             target="_blank"
+                             rel="noopener noreferrer"
+                             className="max-md:hidden"
+                         >
+                             <Button variant='light' size='md'>
+                                 more reviews
+                             </Button>
+                         </a>
 				</div>
 
 				<Swiper
