@@ -22,15 +22,26 @@ const Header = () => {
 					<div className='ml-auto lg:mr-auto lg:ml-0'>
 						<HeaderMenu />
 					</div>
+					<a href="tel:9169997975">
+                      <Button
+                        size="md"
+                        className="flex items-center gap-2 bg-blue-500 text-white hover:bg-blue-600 transition max-md:h-10 max-md:px-4"
+                      >
+                        <img src="/phone.svg" alt="call" className="w-5 h-5 invert" />
+                        <span className="font-semibold">Call Now: 916-999-7975</span>
+                      </Button>
+                    </a>
+
 					<Button
-						variant='light'
-						size='md'
-						className='max-md:h-10 max-md:w-10 max-md:p-2.5'
-						onClick={() => handleScrollToBlock('payment')}
-					>
-						<img src='phone.svg' alt='call' className='lg:hidden' />
-						<span className='hidden lg:inline'>contact us</span>
-					</Button>
+                    						variant='light'
+                    						size='md'
+                    						className='max-md:h-10 max-md:w-10 max-md:p-2.5'
+                    						onClick={() => handleScrollToBlock('payment')}
+                    					>
+                    						<img src='phone.svg' alt='call' className='lg:hidden' />
+                    						<span className='hidden lg:inline'>contact us</span>
+                    					</Button>
+
 				</div>
 			</Container>
 		</header>
