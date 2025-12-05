@@ -9,7 +9,7 @@ const StripeButton = () => {
 				window.open(`${paymentLink}/${paymentSecretKey}`, '_blank')
 			}
 		>
-			<span className='group hover:text-accent flex w-full items-center justify-between gap-1 text-nowrap lg:justify-start'>
+			<span className='hidden group hover:text-accent flex w-full items-center justify-between gap-1 text-nowrap lg:justify-start'>
 				<span className='relative'>
 					Claim Finished / Payment
 					<span className='bg-primary group-hover:bg-accent absolute top-full left-1/2 hidden h-px w-0 transition-[width] duration-150 group-hover:w-1/2 lg:block' />

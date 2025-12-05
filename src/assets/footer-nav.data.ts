@@ -18,10 +18,10 @@ export const footerNavs = [
 				title: 'Contacts',
 				id: 'contact'
 			},
-			{
-				title: 'Claim Finished / Payment',
-				id: 'payment'
-			}
+// 			{
+// 				title: 'Claim Finished / Payment',
+// 				id: 'payment'
+// 			}
 		]
 	},
 	{
