@@ -56,8 +56,6 @@ const ContactForm = () => {
 	// ✅ EmailJS + attachments + recaptcha
 	// =====================================================
 
-		console.log("Loaded SITE KEY:", import.meta.env.VITE_RECAPTCHA_SITE_KEY);
-
 	const mutation = useMutation({
 		mutationFn: async (data: ContactFormValues) => {
 			if (!recaptchaValue)
