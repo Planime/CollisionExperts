@@ -16,14 +16,9 @@ const Contacts = () => {
 								href='tel:+380684838387'
 								className='leading-[140%] font-semibold'
 							>
-								+38(068)-483-83-87
+								916-999-7975
 							</a>
-							<a
-								href='tel:+380684838387'
-								className='leading-[140%] font-semibold'
-							>
-								+38(068)-483-83-87
-							</a>
+
 						</div>
 					</div>
 					<div className='flex flex-col gap-3 max-md:order-1 md:gap-4'>
@@ -35,7 +30,7 @@ const Contacts = () => {
 								href='mailto:barberhub@gmail.com'
 								className='leading-[140%] font-semibold'
 							>
-								barberhub@gmail.com
+								collisionexperts.claims@gmail.com
 							</a>
 						</div>
 					</div>
@@ -45,7 +40,7 @@ const Contacts = () => {
 						</div>
 						<div className='flex items-center gap-3'>
 							<a
-								href='#'
+								href='https://www.instagram.com/collision_experts_/'
 								target='_blank'
 								className='hover:text-accent hover:border-accent flex aspect-square w-11 shrink-0 items-center justify-center rounded-full border border-[#EAEAEA] transition duration-200'
 							>
@@ -63,7 +58,7 @@ const Contacts = () => {
 								</svg>
 							</a>
 							<a
-								href='#'
+								href='https://www.tiktok.com/en/'
 								target='_blank'
 								className='hover:text-accent hover:border-accent flex aspect-square w-11 shrink-0 items-center justify-center rounded-full border border-[#EAEAEA] transition duration-200'
 							>
@@ -81,7 +76,7 @@ const Contacts = () => {
 								</svg>
 							</a>
 							<a
-								href='#'
+								href='https://www.facebook.com/profile.php?id=61577860139495'
 								target='_blank'
 								className='hover:text-accent hover:border-accent flex aspect-square w-11 shrink-0 items-center justify-center rounded-full border border-[#EAEAEA] transition duration-200'
 							>
@@ -106,7 +101,8 @@ const Contacts = () => {
 						</div>
 						<div className='flex flex-col gap-3'>
 							<span className='leading-[140%]'>
-								Mon-Sat: 09:00 to 20:00 <br />{' '}
+								Mon-Fri: 10:00 AM to 6:00 PM <br />{' '}
+							Saturday: 10:00 AM to 2:00 PM <br />{' '}
 								<span className='font-semibold'>
 									Sunday - closed
 								</span>
@@ -119,7 +115,7 @@ const Contacts = () => {
 						</div>
 						<div className='flex flex-col gap-3'>
 							<span className='leading-[140%] font-semibold'>
-								6638 Co Rd 38, Johnstown, CO 80534, USA
+								6315 Watt Ave #117, North Highlands, CA 95660
 							</span>
 						</div>
 					</div>
