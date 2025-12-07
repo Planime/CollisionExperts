@@ -5,13 +5,11 @@ import SocialBtn from '@components/ui/social-btn/SocialBtn'
 import { useScrollStore } from '@store/scroll.store'
 import clsx from 'clsx'
 
-// ✅ импорт стора
-
 const Footer = () => {
 	const { scrollToSection } = useScrollStore()
 
 	const handleScrollClick = (id?: string) => {
-		if (!id) return // если айди нет, ничего не делаем
+		if (!id) return
 		scrollToSection(id)
 	}
 
@@ -23,38 +21,25 @@ const Footer = () => {
 						<div className='text-center md:text-start'>
 							<Logo />
 						</div>
+
 						<div className='flex gap-8 md:flex-col'>
-							<div className='text-lg leading-[140%] font-semibold text-white md:text-xl lg:text-2xl'>
+							<div className='text-lg leading-[140%] font-semibold md:text-xl lg:text-2xl'>
 								Free estimate? <br /> We are in touch
 							</div>
+
 							<div className='ml-auto flex items-center gap-3 md:ml-0'>
-                            	<a
-                            		href='https://www.instagram.com/collision_experts_/'
-                            		target='_blank'
-                            		rel='noopener noreferrer'
-                            		className='inline-flex pointer-events-auto'
-                            	>
-                            		<SocialBtn icon='instagram' theme='dark' />
-                            	</a>
+								<a href='https://www.instagram.com/collision_experts_/' target='_blank' rel='noopener noreferrer'>
+									<SocialBtn icon='instagram' theme='dark' />
+								</a>
 
-{/*                             	<a */}
-{/*                             		href='https://www.tiktok.com/en/' */}
-{/*                             		target='_blank' */}
-{/*                             		rel='noopener noreferrer' */}
-{/*                             		className='inline-flex pointer-events-auto' */}
-{/*                             	> */}
-{/*                             		<SocialBtn icon='tiktok' theme='dark' /> */}
-{/*                             	</a> */}
+								<a href='https://www.tiktok.com/en/' target='_blank' rel='noopener noreferrer'>
+									<SocialBtn icon='tiktok' theme='dark' />
+								</a>
 
-                            	<a
-                            		href='https://www.facebook.com/profile.php?id=61577860139495'
-                            		target='_blank'
-                            		rel='noopener noreferrer'
-                            		className='inline-flex pointer-events-auto'
-                            	>
-                            		<SocialBtn icon='facebook' theme='dark' />
-                            	</a>
-                            </div>
+								<a href='https://www.facebook.com/profile.php?id=61577860139495' target='_blank' rel='noopener noreferrer'>
+									<SocialBtn icon='facebook' theme='dark' />
+								</a>
+							</div>
 						</div>
 					</div>
 
@@ -63,14 +48,8 @@ const Footer = () => {
 							key={index}
 							className='group flex flex-col gap-6 not-last:border-b not-last:border-white/5 not-last:pb-8 md:gap-8 md:border-none md:pb-0 md:last:col-span-2'
 						>
-							<div
-								className={clsx(
-									'text-white',
-									!item.title && 'opacity-0'
-								)}
-								aria-hidden={!item.title}
-							>
-								<b>{item.title ? item.title : 'Other'}</b>
+							<div className={clsx('text-white', !item.title && 'opacity-0')}>
+								<b>{item.title ?? 'Other'}</b>
 							</div>
 
 							<div className='flex flex-col gap-3 group-last:grid group-last:grid-cols-2 md:gap-4'>
@@ -78,18 +57,8 @@ const Footer = () => {
 									<button
 										key={i}
 										type='button'
-										className={clsx(
-											'cursor-pointer text-left',
-											// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-											// @ts-ignore
-
-											!link.id && 'cursor-default'
-										)}
-										onClick={() =>
-											// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-											// @ts-ignore
-											handleScrollClick(link.id)
-										}
+										className='text-left cursor-pointer'
+										onClick={() => handleScrollClick(link.id)}
 									>
 										{link.title}
 									</button>
@@ -106,12 +75,7 @@ const Footer = () => {
 						<div className='leading-normal text-white/70'>
 							© Collision Experts 2025 | All rights reserved
 						</div>
-						<a
-							className='leading-normal text-white/70'
-							href='http://'
-							target='_blank'
-							rel='noopener noreferrer'
-						>
+						<a className='leading-normal text-white/70' href='/privacy' target='_blank'>
 							Privacy Policy
 						</a>
 					</div>

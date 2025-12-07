@@ -1,9 +1,9 @@
 import clsx from 'clsx'
-import type { FC, PropsWithChildren } from 'react'
+import type { FC } from 'react'
 import { Icon } from '../socialIcon'
 import type { SocialBtnProps } from './social-btn.types'
 
-const SocialBtn: FC<PropsWithChildren<SocialBtnProps>> = ({
+const SocialBtn: FC<SocialBtnProps> = ({
 	icon,
 	theme = 'light',
 	className
