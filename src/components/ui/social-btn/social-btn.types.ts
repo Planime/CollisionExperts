@@ -1,6 +1,8 @@
+export type IconName = 'instagram' | 'facebook' | 'tiktok'
+
 export type SocialBtnProps = {
-	href?: string
-	theme?: 'light' | 'dark'
-	icon: IconName
+  icon: IconName
+  theme?: 'light' | 'dark'
+  className?: string
+  href?: string
 }
-export type IconName = 'instagram' | 'tiktok' | 'facebook'

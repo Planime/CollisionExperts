@@ -58,7 +58,9 @@ const Footer = () => {
 										key={i}
 										type='button'
 										className='text-left cursor-pointer'
-										onClick={() => handleScrollClick(link.id)}
+										onClick={() =>
+                                          "id" in link ? handleScrollClick(link.id) : undefined
+                                        }
 									>
 										{link.title}
 									</button>
