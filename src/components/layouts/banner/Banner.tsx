@@ -1,8 +1,11 @@
 import { Button } from '@components/ui/button/Button'
 import { useBreakpoint } from '@hooks/useBreakpoint'
+import { useScrollStore } from '@store/scroll.store'
 
 const Banner = () => {
 	const { isMobile } = useBreakpoint()
+	const { scrollToSection: handleScrollToBlock } = useScrollStore()
+
 	return (
 		<div className='bg-primary relative my-20 overflow-hidden rounded-3xl md:my-24 md:rounded-4xl lg:my-28'>
 			<div className='relative z-1 p-12 pb-0 text-white md:w-1/2 md:p-[72px] md:pr-9'>
@@ -16,8 +19,16 @@ const Banner = () => {
 						the stress, while you get paid.
 					</p>
 				</div>
-				<Button className='max-md:px-6'>Get My Free Estimate</Button>
+
+				{/* 🔥 Scrolls to the payment/estimate form */}
+				<Button
+					className='max-md:px-6'
+					onClick={() => handleScrollToBlock('payment')}
+				>
+					Get My Free Estimate
+				</Button>
 			</div>
+
 			<div className='top-0 right-0 h-[396px] w-full md:absolute md:h-full md:w-3/4 lg:w-1/2'>
 				<img
 					src={isMobile ? 'banner-mobile.webp' : 'banner.webp'}

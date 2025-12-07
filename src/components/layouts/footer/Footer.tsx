@@ -28,10 +28,33 @@ const Footer = () => {
 								Free estimate? <br /> We are in touch
 							</div>
 							<div className='ml-auto flex items-center gap-3 md:ml-0'>
-								<SocialBtn icon='instagram' theme='dark' />
-								<SocialBtn icon='tiktok' theme='dark' />
-								<SocialBtn icon='facebook' theme='dark' />
-							</div>
+                            	<a
+                            		href='https://www.instagram.com/collision_experts_/'
+                            		target='_blank'
+                            		rel='noopener noreferrer'
+                            		className='inline-flex pointer-events-auto'
+                            	>
+                            		<SocialBtn icon='instagram' theme='dark' />
+                            	</a>
+
+{/*                             	<a */}
+{/*                             		href='https://www.tiktok.com/en/' */}
+{/*                             		target='_blank' */}
+{/*                             		rel='noopener noreferrer' */}
+{/*                             		className='inline-flex pointer-events-auto' */}
+{/*                             	> */}
+{/*                             		<SocialBtn icon='tiktok' theme='dark' /> */}
+{/*                             	</a> */}
+
+                            	<a
+                            		href='https://www.facebook.com/profile.php?id=61577860139495'
+                            		target='_blank'
+                            		rel='noopener noreferrer'
+                            		className='inline-flex pointer-events-auto'
+                            	>
+                            		<SocialBtn icon='facebook' theme='dark' />
+                            	</a>
+                            </div>
 						</div>
 					</div>
 
