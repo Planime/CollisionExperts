@@ -2,7 +2,6 @@ import Container from '@components/container/Container'
 import Logo from '@components/logo/Logo'
 import { Button } from '@components/ui/button/Button'
 import { useScrollStore } from '@store/scroll.store'
-
 import HeaderMenu from './HeaderMenu'
 
 const Header = () => {
@@ -11,6 +10,7 @@ const Header = () => {
 	const handleScrollToBlock = (id: string) => {
 		scrollToSection(id)
 	}
+
 	return (
 		<header className='fixed top-0 left-0 z-10 w-full px-2 md:px-[52px]'>
 			<Container>
@@ -22,25 +22,28 @@ const Header = () => {
 					<div className='ml-auto lg:mr-auto lg:ml-0'>
 						<HeaderMenu />
 					</div>
-					<a href="tel:9169997975">
-                      <Button
-                        size="md"
-                        className="flex items-center gap-2 bg-blue-500 text-white hover:bg-blue-600 transition max-md:h-10 max-md:px-4"
-                      >
-                        <img src="/phone.svg" alt="call" className="w-5 h-5 invert" />
-                        <span className="font-semibold">Call Now: 916-999-7975</span>
-                      </Button>
-                    </a>
 
+					{/* Contact US BUTTON */}
 					<Button
-                    						variant='light'
-                    						size='md'
-                    						className='max-md:h-10 max-md:w-10 max-md:p-2.5'
-                    						onClick={() => handleScrollToBlock('payment')}
-                    					>
-                    						<img src='phone.svg' alt='call' className='lg:hidden' />
-                    						<span className='hidden lg:inline'>contact us</span>
-                    					</Button>
+						variant='light'
+						size='md'
+						className='max-md:h-10 max-md:px-4 bg-white text-black border border-gray-300'
+						onClick={() => handleScrollToBlock('payment')}
+					>
+						Contact Us
+					</Button>
+
+					{/* CALL US (GREEN) BUTTON */}
+					<a href="tel:9169997975">
+						<Button
+							size="md"
+							className="max-md:h-10 max-md:px-4 flex items-center gap-2 bg-green-500 text-white hover:bg-green-600 transition"
+						>
+							<img src="/phone.svg" alt="call" className="w-5 h-5 invert" />
+							<span className="font-semibold hidden lg:inline">Call Us</span>
+							<span className="lg:hidden">Call</span>
+						</Button>
+					</a>
 
 				</div>
 			</Container>
