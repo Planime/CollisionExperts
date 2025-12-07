@@ -13,7 +13,7 @@ const Contacts = () => {
 						</div>
 						<div className='flex flex-col gap-3'>
 							<a
-								href='tel:+380684838387'
+								href='tel:9169997975'
 								className='leading-[140%] font-semibold'
 							>
 								916-999-7975
@@ -22,18 +22,18 @@ const Contacts = () => {
 						</div>
 					</div>
 					<div className='flex flex-col gap-3 max-md:order-1 md:gap-4'>
-						<div className='leading-[140%] text-[#6B6B6B]'>
-							Email:
-						</div>
-						<div className='flex flex-col gap-3'>
-							<a
-								href='mailto:barberhub@gmail.com'
-								className='leading-[140%] font-semibold'
-							>
-								collisionexperts.claims@gmail.com
-							</a>
-						</div>
-					</div>
+                    	<div className='leading-[140%] text-[#6B6B6B]'>
+                    		Email:
+                    	</div>
+                    	<div className='flex flex-col gap-3'>
+                    		<a
+                    			href='mailto:collisionexperts.claims@gmail.com'
+                    			className='leading-[140%] font-semibold break-all'
+                    		>
+                    			collisionexperts.claims@gmail.com
+                    		</a>
+                    	</div>
+                    </div>
 					<div className='flex flex-col gap-3 max-md:order-3 md:gap-4'>
 						<div className='leading-[140%] text-[#6B6B6B]'>
 							Social media:
