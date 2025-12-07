@@ -23,15 +23,19 @@ const Header = () => {
 						<HeaderMenu />
 					</div>
 
-					{/* Contact US BUTTON */}
 					<Button
-						variant='light'
-						size='md'
-						className='max-md:h-10 max-md:px-4 bg-white text-black border border-gray-300'
-						onClick={() => handleScrollToBlock('payment')}
-					>
-						Contact Us
-					</Button>
+                    	variant='light'
+                    	size='md'
+                    	className='max-md:h-10 max-md:px-4
+                                   max-md:bg-blue-500 max-md:text-white
+                                   max-md:border-blue-600
+                                   transition'
+                    	onClick={() => handleScrollToBlock('payment')}
+                    >
+                    	<img src='phone.svg' alt='call' className='lg:hidden invert' />
+                    	<span className='hidden lg:inline'>Contact Us</span>
+                    	<span className='lg:hidden text-white'>Contact Us</span>
+                    </Button>
 
 					{/* CALL US (GREEN) BUTTON */}
 					<a href="tel:9169997975">
