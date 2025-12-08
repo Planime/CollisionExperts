@@ -17,42 +17,35 @@ export const footerNavs = [
 			{
 				title: 'Contacts',
 				id: 'contact'
-			},
-// 			{
-// 				title: 'Claim Finished / Payment',
-// 				id: 'payment'
-// 			}
+			}
 		]
 	},
 	{
 		title: 'Services',
 		list: [
 			{
-				title: 'Auto Property Damage Claim'
+				title: 'Auto Property Damage Claim Handling',
+				id: 'damage'
 			},
 			{
-				title: 'Total Loss Review & Guidance'
+				title: 'Collision Repairs',
+				id: 'repairs'
 			},
 			{
-				title: 'Handling'
+				title: 'Estimate & Supplement Preparation',
+				id: 'estimate'
 			},
 			{
-				title: 'Independent Vehicle Appraisals'
+				title: 'Total Loss Review & Guidance',
+				id: 'total'
 			},
 			{
-				title: 'Collision Repairs'
+				title: 'Independent Vehicle Appraisals',
+				id: 'independent'
 			},
 			{
-				title: 'Rental Reimbursement Support'
-			},
-			{
-				title: 'Estimate & Supplement'
-			},
-			{
-				title: 'Diminished Value Consulting'
-			},
-			{
-				title: 'Preparation'
+				title: 'Rental Reimbursement Support',
+				id: 'rental'
 			}
 		]
 	}

@@ -23,20 +23,24 @@ const Footer = () => {
 						</div>
 
 						<div className='flex gap-8 md:flex-col'>
-							<div className='text-lg leading-[140%] font-semibold md:text-xl lg:text-2xl'>
+							<div className='text-lg font-semibold leading-[140%] md:text-xl lg:text-2xl'>
 								Free estimate? <br /> We are in touch
 							</div>
 
 							<div className='ml-auto flex items-center gap-3 md:ml-0'>
-								<a href='https://www.instagram.com/collision_experts_/' target='_blank' rel='noopener noreferrer'>
+								<a
+									href='https://www.instagram.com/collision_experts_/'
+									target='_blank'
+									rel='noopener noreferrer'
+								>
 									<SocialBtn icon='instagram' theme='dark' />
 								</a>
 
-{/* 								<a href='https://www.tiktok.com/en/' target='_blank' rel='noopener noreferrer'> */}
-{/* 									<SocialBtn icon='tiktok' theme='dark' /> */}
-{/* 								</a> */}
-
-								<a href='https://www.facebook.com/profile.php?id=61577860139495' target='_blank' rel='noopener noreferrer'>
+								<a
+									href='https://www.facebook.com/profile.php?id=61577860139495'
+									target='_blank'
+									rel='noopener noreferrer'
+								>
 									<SocialBtn icon='facebook' theme='dark' />
 								</a>
 							</div>
@@ -53,18 +57,25 @@ const Footer = () => {
 							</div>
 
 							<div className='flex flex-col gap-3 group-last:grid group-last:grid-cols-2 md:gap-4'>
-								{item.list.map((link, i) => (
-									<button
-										key={i}
-										type='button'
-										className='text-left cursor-pointer'
-										onClick={() =>
-                                          "id" in link ? handleScrollClick(link.id) : undefined
-                                        }
-									>
-										{link.title}
-									</button>
-								))}
+								{item.list.map((link, i) =>
+									link.id ? (
+										<button
+											key={i}
+											type='button'
+											className='text-left cursor-pointer hover:text-white/80 transition'
+											onClick={() => handleScrollClick(link.id)}
+										>
+											{link.title}
+										</button>
+									) : (
+										<span
+											key={i}
+											className='text-left text-white/60 cursor-default'
+										>
+											{link.title}
+										</span>
+									)
+								)}
 							</div>
 						</div>
 					))}
