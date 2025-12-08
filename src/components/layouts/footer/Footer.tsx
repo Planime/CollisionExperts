@@ -32,9 +32,9 @@ const Footer = () => {
 									<SocialBtn icon='instagram' theme='dark' />
 								</a>
 
-								<a href='https://www.tiktok.com/en/' target='_blank' rel='noopener noreferrer'>
-									<SocialBtn icon='tiktok' theme='dark' />
-								</a>
+{/* 								<a href='https://www.tiktok.com/en/' target='_blank' rel='noopener noreferrer'> */}
+{/* 									<SocialBtn icon='tiktok' theme='dark' /> */}
+{/* 								</a> */}
 
 								<a href='https://www.facebook.com/profile.php?id=61577860139495' target='_blank' rel='noopener noreferrer'>
 									<SocialBtn icon='facebook' theme='dark' />

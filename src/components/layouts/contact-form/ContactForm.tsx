@@ -166,27 +166,28 @@ const ContactForm = () => {
 						/>
 					</div>
 
-					{/* Description + attachments */}
-					<div className="grid gap-4 md:grid-cols-2">
-						<Field
-							isTextarea
-							placeholder="You can add some description here..."
-							label="Description"
-							error={errors.message?.message}
-							registration={register('message')}
-						/>
+{/* // EmailJS can't send attachments for free */}
+{/* 					 */}{/* Description + attachments */}
+{/* 					<div className="grid gap-4 md:grid-cols-2"> */}
+{/* 						<Field */}
+{/* 							isTextarea */}
+{/* 							placeholder="You can add some description here..." */}
+{/* 							label="Description" */}
+{/* 							error={errors.message?.message} */}
+{/* 							registration={register('message')} */}
+{/* 						/> */}
 
-						<label htmlFor="attachment">
-							<span className="text-sm font-medium">Attachments</span>
-							<DragDropUploader
-								onFilesChange={files =>
-									setValue('attachment', files as any, {
-										shouldValidate: true
-									})
-								}
-							/>
-						</label>
-					</div>
+{/* 						<label htmlFor="attachment"> */}
+{/* 							<span className="text-sm font-medium">Attachments</span> */}
+{/* 							<DragDropUploader */}
+{/* 								onFilesChange={files => */}
+{/* 									setValue('attachment', files as any, { */}
+{/* 										shouldValidate: true */}
+{/* 									}) */}
+{/* 								} */}
+{/* 							/> */}
+{/* 						</label> */}
+{/* 					</div> */}
 
 					{/* Privacy + reCAPTCHA */}
 					<div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
@@ -202,9 +203,14 @@ const ContactForm = () => {
 								/>
 								<label htmlFor="privacyPolicy" className="text-sm">
 									I agree to the{' '}
-									<a href="#privacy" className="underline">
-										Privacy Policy
-									</a>
+									<a
+                                    	href="/privacy"
+                                    	className="underline"
+                                    	target="_blank"
+                                    	rel="noopener noreferrer"
+                                    >
+                                    	Privacy Policy
+                                    </a>
 								</label>
 							</div>
 						</div>
