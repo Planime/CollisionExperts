@@ -27,7 +27,7 @@ const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID
 const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
 const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 
-// convert File → base64
+// Convert File → Base64
 const toBase64 = (file: File) =>
 	new Promise<string>((resolve, reject) => {
 		const reader = new FileReader()
@@ -53,33 +53,32 @@ const ContactForm = () => {
 	})
 
 	// =====================================================
-	// ✅ EmailJS + attachments + recaptcha
+	// EmailJS SEND LOGIC (FULLY FIXED)
 	// =====================================================
-
 	const mutation = useMutation({
 		mutationFn: async (data: ContactFormValues) => {
-			if (!recaptchaValue)
-				throw new Error('Please complete the reCAPTCHA')
+			if (!recaptchaValue) throw new Error('Please complete the reCAPTCHA')
 
 			const files = (data.attachment ?? []) as File[]
 
+			// Convert attachments → base64
 			const base64Files = await Promise.all(files.map(f => toBase64(f)))
 
 			const attachments = base64Files.map((b64, i) => ({
 				name: files[i].name,
-				data: b64.split(',')[1]
+				data: b64.split(',')[1] // remove data:mime/base64,
 			}))
 
+			// SEND EMAIL
 			const response = await emailjs.send(
 				EMAILJS_SERVICE_ID,
 				EMAILJS_TEMPLATE_ID,
 				{
-					name: data.name,
-					email: data.email,
+					from_name: data.name,
+					from_email: data.email,
 					phone: data.phone,
 					message: data.message,
-					attachments
-					// 'g-recaptcha-response': recaptchaValue
+					attachments: JSON.stringify(attachments)
 				},
 				EMAILJS_PUBLIC_KEY
 			)
@@ -88,7 +87,7 @@ const ContactForm = () => {
 		},
 
 		onSuccess: () => {
-			toast.success('Message sent!')
+			toast.success('Message sent successfully!')
 
 			reset(
 				{
@@ -119,48 +118,43 @@ const ContactForm = () => {
 	})
 
 	const onSubmit: SubmitHandler<ContactFormValues> = data => {
-		if (data.honeypot) return // bot protection
+		if (data.honeypot) return
 		mutation.mutate(data)
 	}
 
-
 	return (
-		<section className='my-20 md:my-24 lg:my-28'>
+		<section className="my-20 md:my-24 lg:my-28">
 			<Container>
-				<Heading className='mb-10 text-center'>Contact Us</Heading>
+				<Heading className="mb-10 text-center">Contact Us</Heading>
 
 				<form
 					onSubmit={handleSubmit(onSubmit)}
-					className='flex flex-col gap-4 rounded-2xl bg-[#F0F1F3] p-8 md:rounded-3xl md:p-11 lg:p-14'
+					className="flex flex-col gap-4 rounded-2xl bg-[#F0F1F3] p-8 md:rounded-3xl md:p-11 lg:p-14"
 				>
-					{/* honeypot */}
-					<input
-						type='text'
-						className='hidden'
-						{...register('honeypot')}
-					/>
+					{/* Honeypot */}
+					<input type="text" className="hidden" {...register('honeypot')} />
 
 					{/* Inputs */}
-					<div className='grid gap-4 md:grid-cols-3'>
+					<div className="grid gap-4 md:grid-cols-3">
 						<Field
-							placeholder='John'
-							label='Your name'
+							placeholder="John"
+							label="Your name"
 							error={errors.name?.message}
 							registration={register('name')}
 						/>
 
 						<Field
-							label='Your Phone'
-							type='tel'
-							placeholder='+1 (___) ___-____'
+							label="Your Phone"
+							type="tel"
+							placeholder="+1 (___) ___-____"
 							error={errors.phone?.message}
 							registration={register('phone')}
 						/>
 
 						<Field
-							placeholder='example@gmail.com'
-							label='Your Email'
-							type='email'
+							placeholder="example@gmail.com"
+							label="Your Email"
+							type="email"
 							error={errors.email?.message}
 							registration={register('email', {
 								required: 'Email is required',
@@ -172,27 +166,21 @@ const ContactForm = () => {
 						/>
 					</div>
 
-					{/* attachments + textarea */}
-					<div className='grid gap-4 md:grid-cols-2'>
+					{/* Description + attachments */}
+					<div className="grid gap-4 md:grid-cols-2">
 						<Field
 							isTextarea
-							placeholder='You can add some description here...'
-							label='Description'
+							placeholder="You can add some description here..."
+							label="Description"
 							error={errors.message?.message}
 							registration={register('message')}
 						/>
 
-						<label htmlFor='attachment'>
-							<span className='text-sm font-medium'>
-								Attachments
-							</span>
-
-							{/* ✅ Receive files */}
+						<label htmlFor="attachment">
+							<span className="text-sm font-medium">Attachments</span>
 							<DragDropUploader
 								onFilesChange={files =>
-									// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-									// @ts-ignore
-									setValue('attachment', files, {
+									setValue('attachment', files as any, {
 										shouldValidate: true
 									})
 								}
@@ -200,53 +188,40 @@ const ContactForm = () => {
 						</label>
 					</div>
 
-					{/* privacy + recaptcha */}
-					<div className='flex flex-col gap-4 md:flex-row md:items-center md:justify-between'>
-						<div className='relative'>
-							<div className='flex items-center gap-2'>
+					{/* Privacy + reCAPTCHA */}
+					<div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+						<div className="relative">
+							<div className="flex items-center gap-2">
 								<input
-									type='checkbox'
-									id='privacyPolicy'
-									className='h-4 w-4'
+									type="checkbox"
+									id="privacyPolicy"
+									className="h-4 w-4"
 									{...register('privacyPolicy', {
-										required:
-											'You must agree to the Privacy Policy'
+										required: 'You must agree to the Privacy Policy'
 									})}
 								/>
-								<label
-									htmlFor='privacyPolicy'
-									className='text-sm'
-								>
+								<label htmlFor="privacyPolicy" className="text-sm">
 									I agree to the{' '}
-									<a href='#privacy' className='underline'>
+									<a href="#privacy" className="underline">
 										Privacy Policy
 									</a>
 								</label>
 							</div>
 						</div>
-						<div className='relative'>
+
+						<div className="relative">
 							<ReCAPTCHA
 								ref={recaptchaRef}
 								size={isMobile ? 'compact' : 'normal'}
-								sitekey={
-									import.meta.env.VITE_RECAPTCHA_SITE_KEY
-								}
+								sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
 								onChange={value => setRecaptchaValue(value)}
 							/>
 						</div>
 					</div>
 
-					<Button
-						type='submit'
-						size='md'
-						disabled={!isValid || mutation.isPending}
-					>
+					<Button type="submit" size="md" disabled={!isValid || mutation.isPending}>
 						{mutation.isPending ? (
-							<ImSpinner
-								width={24}
-								height={24}
-								className='animate-spin'
-							/>
+							<ImSpinner width={24} height={24} className="animate-spin" />
 						) : (
 							'Send'
 						)}
