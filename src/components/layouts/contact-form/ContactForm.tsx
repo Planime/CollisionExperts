@@ -1,4 +1,4 @@
-import DragDropUploader from '@components/DragDropUploader'
+// import DragDropUploader from '@components/DragDropUploader'  // KEEP COMMENTED FOR LATER
 import Container from '@components/container/Container'
 import Heading from '@components/heading/Heading'
 import { Button } from '@components/ui/button/Button'
@@ -28,6 +28,7 @@ const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
 const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 
 // Convert File → Base64
+// KEEPING FOR FUTURE ATTACHMENTS
 const toBase64 = (file: File) =>
 	new Promise<string>((resolve, reject) => {
 		const reader = new FileReader()
@@ -46,30 +47,30 @@ const ContactForm = () => {
 		handleSubmit,
 		formState: { errors, isValid },
 		reset,
-		setValue
+		// setValue  // <-- REMOVE to prevent build error (add back when attachments go live)
 	} = useForm<ContactFormValuesProps>({
 		mode: 'onChange',
 		resolver: zodResolver(contactFormSchema)
 	})
 
 	// =====================================================
-	// EmailJS SEND LOGIC (FULLY FIXED)
+	// EmailJS SEND LOGIC (ATTACHMENTS DISABLED FOR FREE PLAN)
 	// =====================================================
 	const mutation = useMutation({
 		mutationFn: async (data: ContactFormValues) => {
 			if (!recaptchaValue) throw new Error('Please complete the reCAPTCHA')
 
-			const files = (data.attachment ?? []) as File[]
+			// =============================
+			// KEEPING THIS COMMENT FOR LATER
+			// =============================
+			// const files = (data.attachment ?? []) as File[]
+			// const base64Files = await Promise.all(files.map(f => toBase64(f)))
+			// const attachments = base64Files.map((b64, i) => ({
+			// 	 name: files[i].name,
+			// 	 data: b64.split(',')[1]
+			// }))
 
-			// Convert attachments → base64
-			const base64Files = await Promise.all(files.map(f => toBase64(f)))
-
-			const attachments = base64Files.map((b64, i) => ({
-				name: files[i].name,
-				data: b64.split(',')[1] // remove data:mime/base64,
-			}))
-
-			// SEND EMAIL
+			// SEND EMAIL WITHOUT ATTACHMENTS (FREE EMAILJS)
 			const response = await emailjs.send(
 				EMAILJS_SERVICE_ID,
 				EMAILJS_TEMPLATE_ID,
@@ -78,7 +79,7 @@ const ContactForm = () => {
 					from_email: data.email,
 					phone: data.phone,
 					message: data.message,
-					attachments: JSON.stringify(attachments)
+					// attachments: JSON.stringify(attachments) // <-- KEEP COMMENTED
 				},
 				EMAILJS_PUBLIC_KEY
 			)
@@ -166,28 +167,40 @@ const ContactForm = () => {
 						/>
 					</div>
 
-{/* // EmailJS can't send attachments for free */}
-{/* 					 */}{/* Description + attachments */}
-{/* 					<div className="grid gap-4 md:grid-cols-2"> */}
-{/* 						<Field */}
-{/* 							isTextarea */}
-{/* 							placeholder="You can add some description here..." */}
-{/* 							label="Description" */}
-{/* 							error={errors.message?.message} */}
-{/* 							registration={register('message')} */}
-{/* 						/> */}
+{/* =================================================== */}
+{/* ATTACHMENTS BLOCK (DISABLED — FREE PLAN LIMITATION) */}
+{/* =================================================== */}
+{/*
+					<div className="grid gap-4 md:grid-cols-2">
+						<Field
+							isTextarea
+							placeholder="You can add some description here..."
+							label="Description"
+							error={errors.message?.message}
+							registration={register('message')}
+						/>
 
-{/* 						<label htmlFor="attachment"> */}
-{/* 							<span className="text-sm font-medium">Attachments</span> */}
-{/* 							<DragDropUploader */}
-{/* 								onFilesChange={files => */}
-{/* 									setValue('attachment', files as any, { */}
-{/* 										shouldValidate: true */}
-{/* 									}) */}
-{/* 								} */}
-{/* 							/> */}
-{/* 						</label> */}
-{/* 					</div> */}
+						<label htmlFor="attachment">
+							<span className="text-sm font-medium">Attachments</span>
+							<DragDropUploader
+								onFilesChange={files =>
+									setValue('attachment', files as any, {
+										shouldValidate: true
+									})
+								}
+							/>
+						</label>
+					</div>
+*/}
+
+					{/* Description */}
+					<Field
+						isTextarea
+						placeholder="You can add some description here..."
+						label="Description"
+						error={errors.message?.message}
+						registration={register('message')}
+					/>
 
 					{/* Privacy + reCAPTCHA */}
 					<div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
@@ -204,13 +217,13 @@ const ContactForm = () => {
 								<label htmlFor="privacyPolicy" className="text-sm">
 									I agree to the{' '}
 									<a
-                                    	href="/privacy"
-                                    	className="underline"
-                                    	target="_blank"
-                                    	rel="noopener noreferrer"
-                                    >
-                                    	Privacy Policy
-                                    </a>
+										href="/privacy"
+										className="underline"
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										Privacy Policy
+									</a>
 								</label>
 							</div>
 						</div>
