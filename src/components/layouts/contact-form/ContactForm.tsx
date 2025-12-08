@@ -27,15 +27,17 @@ const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID
 const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
 const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 
-// Convert File → Base64
-// KEEPING FOR FUTURE ATTACHMENTS
-const toBase64 = (file: File) =>
-	new Promise<string>((resolve, reject) => {
-		const reader = new FileReader()
-		reader.readAsDataURL(file)
-		reader.onload = () => resolve(reader.result as string)
-		reader.onerror = error => reject(error)
-	})
+// ======================================
+// Convert File → Base64 (KEEP FOR LATER)
+// Commented to avoid build errors
+// ======================================
+// const toBase64 = (file: File) =>
+// 	new Promise<string>((resolve, reject) => {
+// 		const reader = new FileReader()
+// 		reader.readAsDataURL(file)
+// 		reader.onload = () => resolve(reader.result as string)
+// 		reader.onerror = error => reject(error)
+// 	})
 
 const ContactForm = () => {
 	const recaptchaRef = useRef<ReCAPTCHA>(null)
@@ -46,8 +48,8 @@ const ContactForm = () => {
 		register,
 		handleSubmit,
 		formState: { errors, isValid },
-		reset,
-		// setValue  // <-- REMOVE to prevent build error (add back when attachments go live)
+		reset
+		// setValue   // <-- KEEP COMMENTED, attachments disabled
 	} = useForm<ContactFormValuesProps>({
 		mode: 'onChange',
 		resolver: zodResolver(contactFormSchema)
@@ -61,7 +63,7 @@ const ContactForm = () => {
 			if (!recaptchaValue) throw new Error('Please complete the reCAPTCHA')
 
 			// =============================
-			// KEEPING THIS COMMENT FOR LATER
+			// ATTACHMENTS LOGIC (DISABLED)
 			// =============================
 			// const files = (data.attachment ?? []) as File[]
 			// const base64Files = await Promise.all(files.map(f => toBase64(f)))
@@ -70,7 +72,7 @@ const ContactForm = () => {
 			// 	 data: b64.split(',')[1]
 			// }))
 
-			// SEND EMAIL WITHOUT ATTACHMENTS (FREE EMAILJS)
+			// SEND EMAIL WITHOUT ATTACHMENTS
 			const response = await emailjs.send(
 				EMAILJS_SERVICE_ID,
 				EMAILJS_TEMPLATE_ID,
@@ -78,8 +80,8 @@ const ContactForm = () => {
 					from_name: data.name,
 					from_email: data.email,
 					phone: data.phone,
-					message: data.message,
-					// attachments: JSON.stringify(attachments) // <-- KEEP COMMENTED
+					message: data.message
+					// attachments: JSON.stringify(attachments) // <— ENABLE WHEN PAID PLAN
 				},
 				EMAILJS_PUBLIC_KEY
 			)
@@ -167,19 +169,20 @@ const ContactForm = () => {
 						/>
 					</div>
 
-{/* =================================================== */}
-{/* ATTACHMENTS BLOCK (DISABLED — FREE PLAN LIMITATION) */}
-{/* =================================================== */}
-{/*
-					<div className="grid gap-4 md:grid-cols-2">
-						<Field
-							isTextarea
-							placeholder="You can add some description here..."
-							label="Description"
-							error={errors.message?.message}
-							registration={register('message')}
-						/>
+					{/* Description */}
+					<Field
+						isTextarea
+						placeholder="You can add some description here..."
+						label="Description"
+						error={errors.message?.message}
+						registration={register('message')}
+					/>
 
+					{/* =================================================== */}
+					{/* ATTACHMENTS BLOCK (DISABLED — FREE PLAN LIMITATION) */}
+					{/* =================================================== */}
+					{/*
+					<div className="grid gap-4 md:grid-cols-2">
 						<label htmlFor="attachment">
 							<span className="text-sm font-medium">Attachments</span>
 							<DragDropUploader
@@ -191,16 +194,7 @@ const ContactForm = () => {
 							/>
 						</label>
 					</div>
-*/}
-
-					{/* Description */}
-					<Field
-						isTextarea
-						placeholder="You can add some description here..."
-						label="Description"
-						error={errors.message?.message}
-						registration={register('message')}
-					/>
+					*/}
 
 					{/* Privacy + reCAPTCHA */}
 					<div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
