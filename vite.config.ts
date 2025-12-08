@@ -18,7 +18,7 @@ if (window.location.hostname !== "localhost") {
 `;
 
 // ============================
-// Disable console functions
+// Disable console functions (PRODUCTION ONLY)
 // ============================
 const disableConsoleScript = `
 if (window.location.hostname !== "localhost") {
@@ -31,7 +31,7 @@ if (window.location.hostname !== "localhost") {
 `;
 
 // ============================
-// Disable Right-Click, Block DevTools Keys
+// Disable Right-Click & DevTools Hotkeys (SAFE)
 // ============================
 const disableRightClickAndKeysScript = `
 if (window.location.hostname !== "localhost") {
@@ -39,7 +39,7 @@ if (window.location.hostname !== "localhost") {
     // Disable right-click
     document.addEventListener("contextmenu", e => e.preventDefault());
 
-    // Disable special key combos (F12, Ctrl+Shift+I, Ctrl+U, Ctrl+Shift+C, etc.)
+    // Disable devtools hotkeys
     document.addEventListener("keydown", function(e) {
         if (
             e.key === "F12" ||
@@ -52,32 +52,13 @@ if (window.location.hostname !== "localhost") {
         }
     });
 
-    // Attempt to detect DevTools (basic)
-    let devtoolsOpen = false;
-    const threshold = 160;
-
-    setInterval(function() {
-        const widthDiff = window.outerWidth - window.innerWidth;
-        const heightDiff = window.outerHeight - window.innerHeight;
-
-        if (widthDiff > threshold || heightDiff > threshold) {
-            if (!devtoolsOpen) {
-                devtoolsOpen = true;
-                alert("Developer tools are disabled on this website.");
-                window.location.reload();
-            }
-        } else {
-            devtoolsOpen = false;
-        }
-    }, 1000);
+    // ❌ DevTools detection removed to avoid breaking mobile browsers
 }
 `;
 
 // ============================
-// Blur Source Code in DevTools Elements Panel
-// (obfuscates CSS & HTML visually)
+// Optional: Make text unselectable (mild obfuscation)
 // ============================
-
 const blurSourceCodeStyle = `
 if (window.location.hostname !== "localhost") {
     const style = document.createElement("style");
