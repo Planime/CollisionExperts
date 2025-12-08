@@ -6,34 +6,68 @@ const Contacts = () => {
 		<section>
 			<Container>
 				<Heading>Contacts</Heading>
-				<div className='mt-6 mb-8 grid grid-cols-2 gap-x-4 gap-y-8 md:mt-8 md:mb-11 md:gap-y-10 lg:mt-10 lg:mb-14 lg:grid-cols-3 lg:gap-y-12'>
-					<div className='flex flex-col gap-3 md:gap-4'>
-						<div className='leading-[140%] text-[#6B6B6B]'>
-							Contacts
-						</div>
-						<div className='flex flex-col gap-3'>
-							<a
-								href='tel:9169997975'
-								className='leading-[140%] font-semibold'
-							>
-								916-999-7975
-							</a>
 
-						</div>
+				<div className='mt-6 mb-8 grid grid-cols-2 gap-x-4 gap-y-8 md:mt-8 md:mb-11 md:gap-y-10 lg:mt-10 lg:mb-14 lg:grid-cols-3 lg:gap-y-12'>
+
+					{/* CALL SECTION */}
+					<div className='flex flex-col gap-3 md:gap-4'>
+						<div className='leading-[140%] text-[#6B6B6B]'>Call us:</div>
+
+						<a
+							href='tel:9169997975'
+							className='flex items-center gap-3 rounded-lg px-4 py-2.5 hover:bg-black/[0.04] transition cursor-pointer'
+						>
+							{/* Phone Icon */}
+							<svg
+								width='18'
+								height='18'
+								viewBox='0 0 20 20'
+								fill='none'
+								xmlns='http://www.w3.org/2000/svg'
+								className='text-[#555]'
+							>
+								<path
+									d='M15.8332 13.3167C14.8415 13.3167 13.8748 13.1583 12.9582 12.85C12.6748 12.7583 12.3582 12.825 12.1498 13.0333L10.7998 14.3833C8.58317 13.2417 6.78317 11.45 5.6415 9.21667L6.98317 7.86667C7.1915 7.65833 7.25817 7.34167 7.1665 7.05833C6.85817 6.14167 6.69984 5.175 6.69984 4.18333C6.69984 3.7 6.29984 3.3 5.8165 3.3H4.1665C3.68317 3.3 3.28317 3.7 3.28317 4.18333C3.28317 11.0583 8.9415 16.7167 15.8165 16.7167C16.2998 16.7167 16.6998 16.3167 16.6998 15.8333V14.1833C16.6998 13.7 16.2998 13.3167 15.8332 13.3167Z'
+									fill='currentColor'
+								/>
+							</svg>
+
+							<span className='text-base font-semibold text-[#111]'>
+								916-999-7975
+							</span>
+						</a>
 					</div>
+
+					{/* EMAIL SECTION */}
 					<div className='flex flex-col gap-3 max-md:order-1 md:gap-4'>
-                    	<div className='leading-[140%] text-[#6B6B6B]'>
-                    		Email:
-                    	</div>
-                    	<div className='flex flex-col gap-3'>
-                    		<a
-                    			href='mailto:collisionexperts.claims@gmail.com'
-                    			className='leading-[140%] font-semibold break-all'
-                    		>
-                    			collisionexperts.claims@gmail.com
-                    		</a>
-                    	</div>
-                    </div>
+						<div className='leading-[140%] text-[#6B6B6B]'>Email us:</div>
+
+						<a
+							href='mailto:collisionexperts.claims@gmail.com'
+							className='flex items-center gap-3 rounded-lg px-4 py-2.5 hover:bg-black/[0.04] transition cursor-pointer break-all'
+						>
+							{/* Email Icon */}
+							<svg
+								width='18'
+								height='18'
+								viewBox='0 0 20 20'
+								fill='none'
+								xmlns='http://www.w3.org/2000/svg'
+								className='text-[#555]'
+							>
+								<path
+									d='M3.3335 4.16663H16.6668C17.1088 4.16663 17.5002 4.55804 17.5002 4.99996V15C17.5002 15.4419 17.1088 15.8333 16.6668 15.8333H3.3335C2.89158 15.8333 2.50016 15.4419 2.50016 15V4.99996C2.50016 4.55804 2.89158 4.16663 3.3335 4.16663ZM16.6668 6.08329L10.0002 10.4166L3.3335 6.08329V15H16.6668V6.08329ZM10.0002 8.83329L16.4668 4.16663H3.5335L10.0002 8.83329Z'
+									fill='currentColor'
+								/>
+							</svg>
+
+							<span className='text-base font-semibold text-[#111]'>
+								collisionexperts.claims@gmail.com
+							</span>
+						</a>
+					</div>
+
+					{/* SOCIAL MEDIA */}
 					<div className='flex flex-col gap-3 max-md:order-3 md:gap-4'>
 						<div className='leading-[140%] text-[#6B6B6B]'>
 							Social media:
@@ -57,24 +91,7 @@ const Contacts = () => {
 									/>
 								</svg>
 							</a>
-{/* 							<a */}
-{/* 								href='https://www.tiktok.com/en/' */}
-{/* 								target='_blank' */}
-{/* 								className='hover:text-accent hover:border-accent flex aspect-square w-11 shrink-0 items-center justify-center rounded-full border border-[#EAEAEA] transition duration-200' */}
-{/* 							> */}
-{/* 								<svg */}
-{/* 									width='20' */}
-{/* 									height='20' */}
-{/* 									viewBox='0 0 20 20' */}
-{/* 									fill='none' */}
-{/* 									xmlns='http://www.w3.org/2000/svg' */}
-{/* 								> */}
-{/* 									<path */}
-{/* 										d='M13.8335 4.85C13.264 4.19961 12.95 3.3645 12.9501 2.5H10.3751V12.8333C10.3557 13.3927 10.1197 13.9226 9.71705 14.3112C9.31438 14.6999 8.77646 14.917 8.2168 14.9167C7.03346 14.9167 6.05013 13.95 6.05013 12.75C6.05013 11.3167 7.43346 10.2417 8.85846 10.6833V8.05C5.98346 7.66667 3.4668 9.9 3.4668 12.75C3.4668 15.525 5.7668 17.5 8.20846 17.5C10.8251 17.5 12.9501 15.375 12.9501 12.75V7.50833C13.9943 8.25821 15.2479 8.66054 16.5335 8.65833V6.08333C16.5335 6.08333 14.9668 6.15833 13.8335 4.85Z' */}
-{/* 										fill='currentColor' */}
-{/* 									/> */}
-{/* 								</svg> */}
-{/* 							</a> */}
+
 							<a
 								href='https://www.facebook.com/profile.php?id=61577860139495'
 								target='_blank'
@@ -95,31 +112,27 @@ const Contacts = () => {
 							</a>
 						</div>
 					</div>
+
+					{/* WORK SCHEDULE */}
 					<div className='flex flex-col gap-3 md:gap-4'>
-						<div className='leading-[140%] text-[#6B6B6B]'>
-							Work schedule:
-						</div>
-						<div className='flex flex-col gap-3'>
-							<span className='leading-[140%]'>
-								Mon-Fri: 10:00 AM to 6:00 PM <br />{' '}
-							Saturday: 10:00 AM to 2:00 PM <br />{' '}
-								<span className='font-semibold'>
-									Sunday - closed
-								</span>
-							</span>
-						</div>
+						<div className='leading-[140%] text-[#6B6B6B]'>Work schedule:</div>
+						<span className='leading-[140%]'>
+							Mon-Fri: 10:00 AM – 6:00 PM <br />
+							Saturday: 10:00 AM – 2:00 PM <br />
+							<span className='font-semibold'>Sunday – closed</span>
+						</span>
 					</div>
+
+					{/* ADDRESS */}
 					<div className='flex flex-col gap-3 max-md:order-2 md:gap-4'>
-						<div className='leading-[140%] text-[#6B6B6B]'>
-							Address:
-						</div>
-						<div className='flex flex-col gap-3'>
-							<span className='leading-[140%] font-semibold'>
-								6315 Watt Ave #117, North Highlands, CA 95660
-							</span>
-						</div>
+						<div className='leading-[140%] text-[#6B6B6B]'>Address:</div>
+						<span className='leading-[140%] font-semibold'>
+							6315 Watt Ave #117, North Highlands, CA 95660
+						</span>
 					</div>
 				</div>
+
+				{/* MAP */}
 				<div className='h-[358px] w-full overflow-hidden rounded-3xl md:h-[428px] md:rounded-[36px]'>
 					<iframe
 						className='h-full w-full rounded-xl'
