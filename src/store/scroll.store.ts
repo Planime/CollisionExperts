@@ -8,10 +8,12 @@ interface ScrollStore {
 
 export const useScrollStore = create<ScrollStore>(set => ({
 	activeSection: null,
+
 	setActiveSection: section => set({ activeSection: section }),
+
 	scrollToSection: id => {
 		const element = document.getElementById(id)
-		const header = document.querySelector('header') // предполагается, что твоя шапка — <header>
+		const header = document.querySelector('header')
 		const headerHeight = header ? header.clientHeight : 0
 
 		if (element) {
@@ -19,7 +21,13 @@ export const useScrollStore = create<ScrollStore>(set => ({
 				element.getBoundingClientRect().top +
 				window.scrollY -
 				headerHeight
-			window.scrollTo({ top, behavior: 'smooth' })
+
+			// INSTANT SCROLL — NO SMOOTH ANIMATION
+			window.scrollTo({
+				top,
+				behavior: 'auto' // IMPORTANT: disables slow smooth scroll
+			})
+
 			set({ activeSection: id })
 		}
 	}
